@@ -49,7 +49,7 @@ public class WordCountTopology {
             //LocalCluster类在本地开发环境来模拟一个完整的storm集群
             LocalCluster cluster = new LocalCluster();
             cluster.submitTopology(TOPOLOGY_NAME, config, builder.createTopology());
-            Utils.sleep(10000);
+            Utils.sleep(20000);
             cluster.killTopology(TOPOLOGY_NAME);
             cluster.shutdown();
         }else {

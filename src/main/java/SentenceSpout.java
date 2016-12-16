@@ -6,6 +6,7 @@ import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 import org.apache.storm.utils.Utils;
 
+import java.io.*;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -65,6 +66,22 @@ public class SentenceSpout extends BaseRichSpout{
             index=0;
         }
         Utils.sleep(1000);
+        /*
+        try {
+            File file = new File("/home/ivens/storm_proj/workspace/wordcount/input/test.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String read_in = null;
+            while ((read_in = reader.readLine()) != null) {
+                UUID msgId = UUID.randomUUID();
+                Values val = new Values(read_in);
+                this.pending.put(msgId, val);
+                this.collector.emit(val, msgId);
+            }
+            reader.close();
+        } catch (IOException ex) {
+            System.out.println("read file err");
+        }
+        */
     }
 
     @Override

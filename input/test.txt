@@ -1,3 +1,13 @@
-I love you all the time
-yes i must be in love with you
-
+File file = new File("/home/ivens/storm_proj/workspace/wordcount/input/test.txt");
+BufferedReader reader = new BufferedReader(new FileReader(file));
+String read_in = null;
+while ((read_in = reader.readLine()) != null) {
+	UUID msgId = UUID.randomUUID();
+	Values val = new Values(read_in);
+	this.pending.put(msgId, val);
+	this.collector.emit(val, msgId);
+}
+reader.close();
+} catch (IOException ex) {
+	System.out.println("read file err");
+}
