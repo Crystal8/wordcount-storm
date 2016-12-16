@@ -4,6 +4,8 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseRichBolt;
 import org.apache.storm.tuple.Tuple;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.*;
 
 public class ReportBolt extends BaseRichBolt {
@@ -32,6 +34,7 @@ public class ReportBolt extends BaseRichBolt {
      cleanup方法用来释放bolt占用的资源
      */
     public void cleanup(){
+        FileOutputStream out = new FileOutputStream(new File(""))
         System.out.println("--- FINAL COUNTS ---");
         List<String> keys = new ArrayList<String>();
         keys.addAll(this.counts.keySet());
